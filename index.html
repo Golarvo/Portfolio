@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<!--
+  PORTFOLIO TEMPLATE — quick edit guide
+  1. Your name / tagline .................. search "Anass El Gmairi"
+  2. About paragraph ...................... search "ABOUT COPY"
+  3. Focus areas ........................... search "FOCUS AREAS"
+  4. Currently learning tags .............. search "LEARNING LIST"
+  5. Contact email / links ................ search "CONTACT LINKS"
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anass El Gmairi — Mechatronics & Robotics Student</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500;1,9..144,600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EDE8DE;
+    --surface:#E2DBCB;
+    --ink:#1E1B16;
+    --ink-soft:#5B564D;
+    --accent:#1F6F5C;
+    --accent-warm:#B8681F;
+    --line:rgba(30,27,22,0.16);
+    --radius:3px;
+    --maxw:1000px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14181A;
+      --surface:#1B2224;
+      --ink:#EDE8DE;
+      --ink-soft:#A7A499;
+      --accent:#57C7A6;
+      --accent-warm:#E3A94A;
+      --line:rgba(237,232,222,0.14);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14181A;
+    --surface:#1B2224;
+    --ink:#EDE8DE;
+    --ink-soft:#A7A499;
+    --accent:#57C7A6;
+    --accent-warm:#E3A94A;
+    --line:rgba(237,232,222,0.14);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    transition:background .3s ease, color .3s ease;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-mark{
+    font-family:"Fraunces", serif; font-style:italic; font-weight:500;
+    font-size:1.05rem; letter-spacing:0.01em; text-decoration:none;
+  }
+  .nav-links{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
+  .nav-links a{
+    text-decoration:none; font-size:0.9rem; color:var(--ink-soft);
+    position:relative; padding-bottom:3px; transition:color .2s ease;
+  }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:0; width:100%; height:1px;
+    background:var(--accent); transform:scaleX(0); transform-origin:left;
+    transition:transform .25s ease;
+  }
+  .nav-links a:hover, .nav-links a.active{color:var(--ink);}
+  .nav-links a.active::after, .nav-links a:hover::after{transform:scaleX(1);}
+  .theme-btn{
+    border:1px solid var(--line); background:transparent; color:var(--ink-soft);
+    font-family:inherit; font-size:0.8rem; padding:6px 12px; border-radius:var(--radius);
+    cursor:pointer; transition:border-color .2s ease, color .2s ease;
+  }
+  .theme-btn:hover{border-color:var(--ink-soft); color:var(--ink);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:168px 0 88px;
+    display:grid; grid-template-columns:1fr auto; gap:40px; align-items:end;
+  }
+  .hero-name{
+    font-family:"Fraunces", serif; font-weight:500; font-style:italic;
+    font-size:clamp(2.4rem, 5.6vw, 4.2rem); line-height:1.03; margin:0 0 18px;
+    letter-spacing:-0.01em;
+    opacity:0; transform:translateY(14px);
+    animation:rise .8s cubic-bezier(.22,.68,0,1) 0.05s forwards;
+  }
+  .hero-role{
+    font-size:clamp(1rem, 2vw, 1.2rem); color:var(--ink-soft); margin:0 0 28px;
+    max-width:48ch;
+    opacity:0; transform:translateY(14px);
+    animation:rise .8s cubic-bezier(.22,.68,0,1) 0.2s forwards;
+  }
+  .hero-line{
+    display:flex; align-items:center; gap:10px; font-size:0.92rem; color:var(--ink-soft);
+    opacity:0; transform:translateY(14px);
+    animation:rise .8s cubic-bezier(.22,.68,0,1) 0.35s forwards;
+  }
+  .hero-line .cursor{
+    display:inline-block; width:8px; height:16px; background:var(--accent);
+    animation:blink 1s steps(1) infinite;
+  }
+  #rotating-word{color:var(--ink); font-weight:500;}
+  @keyframes rise{to{opacity:1; transform:translateY(0);}}
+  @keyframes blink{0%,49%{opacity:1;} 50%,100%{opacity:0;}}
+
+  .hero-graphic{
+    width:132px; height:132px; align-self:end; margin-bottom:6px;
+    opacity:0; animation:rise 1s cubic-bezier(.22,.68,0,1) 0.4s forwards;
+  }
+  @media (max-width:720px){
+    .hero{grid-template-columns:1fr; padding-top:140px;}
+    .hero-graphic{display:none;}
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:80px 0; border-top:1px solid var(--line);}
+  .section-head{margin-bottom:44px;}
+  .section-head h2{
+    font-family:"Fraunces", serif; font-weight:500; font-size:clamp(1.5rem,2.8vw,2rem);
+    margin:0 0 10px;
+  }
+  .section-head p{color:var(--ink-soft); margin:0; max-width:52ch; font-size:0.95rem;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:56px;}
+  @media (max-width:760px){.about-grid{grid-template-columns:1fr;}}
+  .about-copy p{color:var(--ink-soft); max-width:58ch; font-size:1rem;}
+  .about-copy p:first-child{color:var(--ink); font-size:1.08rem;}
+  .skills-list{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:10px;}
+  .skills-list li{
+    font-size:0.85rem; border:1px solid var(--line); padding:6px 13px;
+    border-radius:100px; color:var(--ink-soft);
+  }
+  .skills-label{font-size:0.85rem; color:var(--ink-soft); margin:0 0 14px;}
+
+  /* ---------- FOCUS AREAS ---------- */
+  .focus-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .focus-card{background:var(--bg); padding:30px 26px;}
+  .focus-index{font-size:0.8rem; color:var(--ink-soft);}
+  .focus-title{font-family:"Fraunces", serif; font-weight:500; font-size:1.1rem; margin:14px 0 8px;}
+  .focus-desc{color:var(--ink-soft); font-size:0.9rem; margin:0;}
+  @media (max-width:760px){.focus-grid{grid-template-columns:1fr;}}
+
+  /* ---------- CONTACT ---------- */
+  .contact-inner{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:32px;}
+  .contact-head{
+    font-family:"Fraunces", serif; font-style:italic; font-weight:500;
+    font-size:clamp(1.7rem,3.6vw,2.5rem); max-width:15ch; margin:0;
+  }
+  .contact-links{list-style:none; margin:0; padding:0; text-align:right;}
+  .contact-links li{margin-bottom:10px;}
+  .contact-links a{
+    text-decoration:none; font-size:1rem; color:var(--ink-soft);
+    border-bottom:1px solid transparent; transition:color .2s ease, border-color .2s ease;
+  }
+  .contact-links a:hover{color:var(--accent); border-color:var(--accent);}
+  @media (max-width:600px){
+    .contact-inner{flex-direction:column; align-items:flex-start;}
+    .contact-links{text-align:left;}
+  }
+
+  footer{
+    border-top:1px solid var(--line); padding:26px 0; margin-top:0;
+    font-size:0.82rem; color:var(--ink-soft);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-mark">Anass El Gmairi</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about" data-target="about">About</a></li>
+      <li><a href="#focus" data-target="focus">Focus</a></li>
+      <li><a href="#contact" data-target="contact">Contact</a></li>
+    </ul>
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark mode">Dark mode</button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <section class="hero" style="border-top:none; padding-bottom:72px;">
+      <div>
+        <h1 class="hero-name">Anass El Gmairi</h1>
+        <p class="hero-role">Mechatronics & Robotics student at Arts et Métiers, Rabat campus — learning to bridge mechanical, electrical, and software systems into things that move.</p>
+        <p class="hero-line"><span class="cursor" aria-hidden="true"></span> Currently learning <span id="rotating-word">robotics</span></p>
+      </div>
+      <svg class="hero-graphic" viewBox="0 0 132 132" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="66" cy="66" r="20" stroke="var(--line)" stroke-width="1"/>
+        <circle cx="66" cy="66" r="8" stroke="var(--accent)" stroke-width="2"/>
+        <g stroke="var(--line)" stroke-width="1">
+          <line x1="66" y1="30" x2="66" y2="42"/>
+          <line x1="66" y1="90" x2="66" y2="102"/>
+          <line x1="30" y1="66" x2="42" y2="66"/>
+          <line x1="90" y1="66" x2="102" y2="66"/>
+          <line x1="42" y1="42" x2="50" y2="50"/>
+          <line x1="82" y1="82" x2="90" y2="90"/>
+          <line x1="90" y1="42" x2="82" y2="50"/>
+          <line x1="50" y1="82" x2="42" y2="90"/>
+        </g>
+        <path d="M14 106 h20 v-14 h20 v20 h20 v-30 h20" stroke="var(--accent-warm)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </section>
+
+    <section id="about">
+      <div class="section-head">
+        <h2>About</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-copy">
+          <!-- ABOUT COPY -->
+          <p>I'm a student at the Arts et Métiers campus of Rabat, working toward an engineering degree with a focus on mechatronics and robotics.</p>
+          <p>What drew me to this field is the mix: a robotics problem is never just mechanical, or just electrical, or just code — it's usually all three at once, and figuring out how they fit together is most of the interesting work. I'm early in that process, currently building up the fundamentals in control systems, embedded electronics, and mechanical design.</p>
+          <p>Based in Rabat, Morocco.</p>
+        </div>
+        <div>
+          <p class="skills-label">Currently learning</p>
+          <!-- LEARNING LIST -->
+          <ul class="skills-list">
+            <li>Control systems</li><li>Embedded systems</li><li>C / C++</li>
+            <li>Python</li><li>CAD (SolidWorks)</li><li>Arduino</li>
+            <li>Circuit design</li><li>MATLAB / Simulink</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="focus">
+      <div class="section-head">
+        <h2>Areas of focus</h2>
+        <p>No finished projects to show yet — here's what I'm spending my time learning right now.</p>
+      </div>
+      <!-- FOCUS AREAS -->
+      <div class="focus-grid">
+        <div class="focus-card">
+          <span class="focus-index">01</span>
+          <h3 class="focus-title">Robotics & control</h3>
+          <p class="focus-desc">Kinematics, sensors, and the control loops that let a machine react to its environment.</p>
+        </div>
+        <div class="focus-card">
+          <span class="focus-index">02</span>
+          <h3 class="focus-title">Embedded systems</h3>
+          <p class="focus-desc">Microcontrollers, circuit design, and the electronics that sit between mechanics and code.</p>
+        </div>
+        <div class="focus-card">
+          <span class="focus-index">03</span>
+          <h3 class="focus-title">Mechanical design</h3>
+          <p class="focus-desc">CAD modeling and the structural side of building something that has to actually move.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-inner">
+        <h2 class="contact-head">Let's get in touch</h2>
+        <!-- CONTACT LINKS -->
+        <ul class="contact-links">
+          <li><a href="mailto:golarvo@gmail.com">golarvo@gmail.com</a></li>
+          <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="#" target="https://github.com/golarvo" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:8px;">
+      <span>© 2026 Anass El Gmairi</span>
+      <span>Arts et Métiers, Rabat</span>
+    </div>
+  </footer>
+</main>
+
+<script>
+  // Theme toggle: cycles the explicit override, otherwise follows system preference
+  (function(){
+    var root = document.documentElement;
+    var btn = document.getElementById('theme-toggle');
+    function isDark(){
+      var explicit = root.getAttribute('data-theme');
+      if (explicit) return explicit === 'dark';
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    function syncLabel(){ btn.textContent = isDark() ? 'Light mode' : 'Dark mode'; }
+    btn.addEventListener('click', function(){
+      root.setAttribute('data-theme', isDark() ? 'light' : 'dark');
+      syncLabel();
+    });
+    syncLabel();
+  })();
+
+  // Rotating word in the hero line
+  (function(){
+    var words = ['robotics', 'control systems', 'embedded systems', 'mechanical design'];
+    var el = document.getElementById('rotating-word');
+    var i = 0;
+    setInterval(function(){
+      i = (i + 1) % words.length;
+      el.style.opacity = 0;
+      setTimeout(function(){
+        el.textContent = words[i];
+        el.style.opacity = 1;
+      }, 200);
+    }, 2600);
+    el.style.transition = 'opacity .2s ease';
+  })();
+
+  // Active nav link on scroll
+  (function(){
+    var links = Array.prototype.slice.call(document.querySelectorAll('#nav-links a'));
+    var sections = links.map(function(link){
+      return document.getElementById(link.dataset.target);
+    });
+    function onScroll(){
+      var pos = window.scrollY + window.innerHeight * 0.35;
+      var current = sections[0];
+      sections.forEach(function(sec){
+        if (sec && sec.offsetTop <= pos) current = sec;
+      });
+      links.forEach(function(link){
+        link.classList.toggle('active', current && link.dataset.target === current.id);
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+</body>
+</html>
